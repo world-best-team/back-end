@@ -1,5 +1,5 @@
 package team.world.best.backend.community.service;
 
-public class PostQueryService {
+public class CommunityQueryService {
 
 }

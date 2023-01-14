@@ -30,4 +30,46 @@ public class Comment {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
     private Member member; // 작성자
+
+    /**
+     * 연관관계 메서드
+     */
+    public void setMember(Member member){
+        this.member = member;
+        member.getComments().add(this);
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+        post.getComments().add(this);
+    }
+
+    /**
+     * 생성 메서드
+     */
+
+    public static Comment createComment(String content, Member member, Post post) {
+        Comment comment = new Comment();
+        comment.comment(content);
+        comment.setMember(member);
+        comment.setPost(post);
+        return comment;
+    }
+
+    /**
+     * 비지니스 로직
+     */
+
+    public void comment(String content) {
+        this.content = content;
+        this.userLike = 0;
+        this.userDislike = 0;
+        this.status = CommentStatus.CREATED;
+        this.createdAt = LocalDateTime.now();
+        this.modifiedAt = LocalDateTime.now();
+    }
+
+    public void update() {
+
+    }
 }

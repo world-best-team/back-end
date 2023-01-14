@@ -2,7 +2,6 @@ package team.world.best.backend.community.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
 import team.world.best.backend.member.domain.Member;
 
 import java.time.LocalDateTime;
@@ -37,4 +36,56 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
+
+    /**
+     * 연관관계 메서드
+     */
+    public void setMember(Member member) {
+        this.member = member;
+        member.getPosts().add(this);
+    }
+
+    /**
+     * 생성 메서드
+     */
+    public static Post createPost(String title, String content, Member member) {
+        Post post = new Post();
+        post.post(title, content);
+        post.setMember(member);
+        return post;
+    }
+
+    /**
+     * 비지니스 로직
+     */
+
+    public void post(String title, String content){
+        this.title = title;
+        this.content = content;
+        this.userLike = 0;
+        this.userDislike = 0;
+        this.views = 0;
+        this.status = PostStatus.CREATED;
+        this.createdAt = LocalDateTime.now();
+        this.modifiedAt = LocalDateTime.now();
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.modifiedAt = LocalDateTime.now();
+    }
+
+    public void like() {
+        this.userLike ++;
+    }
+
+    public void dislike() {
+        this.userDislike ++;
+    }
+
+    public void view() {
+        this.views ++;
+    }
+
 }

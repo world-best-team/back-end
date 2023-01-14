@@ -1,4 +1,4 @@
-package team.world.best.backend.community.dto;
+package team.world.best.backend.community.dto.post;
 
 import lombok.Getter;
 import team.world.best.backend.common.dto.DataResponse;

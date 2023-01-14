@@ -1,4 +1,4 @@
-package team.world.best.backend.community.dto;
+package team.world.best.backend.community.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
