@@ -1,2 +1,4 @@
-package team.world.best.backend.member.dto;public class PreSignupMemberDto {
+package team.world.best.backend.member.dto;
+
+public class PreSignInMemberDto {
 }
