@@ -1,12 +1,12 @@
 package team.world.best.backend.subscription.service;
 
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import team.world.best.backend.subscription.domain.LeaseNotice;
 
-@Service
-//@RequiredArgsConstructor
-@Transactional(readOnly = true)
+import java.util.List;
+
+
 public interface SubscriptionService {
+    LeaseNotice findLeaseNoticeById(String id);
+    List<LeaseNotice> findLeaseNotices();
 }
