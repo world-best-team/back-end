@@ -59,8 +59,10 @@ public class CommunityService {
         return findPost.getId();
     }
 
+    @Transactional
     public Post findPostById(Long id) {
         Post findPost = postRepository.findById(id);
+        findPost.view();
         return findPost;
     }
 

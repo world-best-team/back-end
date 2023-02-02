@@ -31,5 +31,4 @@ class PostServiceTest {
         assertEquals(postId, findPost.getId());
 
     }
-
 }
